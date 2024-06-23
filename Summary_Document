@@ -1,0 +1,48 @@
+STEP:1 Loading Dataset.
+
+1. Initially the csv file was loaded to the jupyter notebook. After importing necessary libraries like pandas and numpy , basic    operations like shape, info, describe & column names were executed.
+
+
+Step: 2 Inspecting Data
+   On conducting thorough scrutiny of the data set , following discrepencies were observed:
+1. presence of unwanted column-	Unnamed: 0
+2. Presence of Duplicate rows & columns
+3. Null values existing in columns like salary, Age,Email,Join date,Salary and department
+
+
+Step:3 Handling Missing values
+1. Missing values detected in salary and age column was replaced with median assuming that outliers may exist.
+2. While replacing salary & age column with median , some error occured and to handle the same
+   "pd.options.mode.copy_on_write = True" code was used.  
+3. percentage of null values under various columns was calculated so as to drop the same if it exceeeds 50%. However , null    values present under various columns was less than 50%, hence no columns dropped.
+
+Step:4 Removing Duplicates
+1. All the duplicate values dropped using drop duplicate option.
+
+Step:5 Correcting Email formats
+ 1. Emails were in object format and the initial step was to convert the same to string.
+ 2. The is_valid_email Function uses a regular expression to check if an email address is in a valid format. The pattern matches     common email formats.
+ 3. Thirdly using the lambda function all valid emails were sorted replacing the invalid ones with "None"and lastly the rows         invalid email format dropped.
+ 
+Step :6 Cleaning name fields
+1. To check for uncommon values under 'Name ' column, threshold option is used assuming that noise is rare. However no such        instances was detected.
+2. The threshold option used to determine the occurence of uncommon values. In this case , it has been assumed that any value      appearing fewer than 10 times is considered uncommon.
+3. Initially the values with count below threshold is filtered, then the same is stored under uncommon values and the same is       printed.
+4. Also as an additional measure  the columns with "object datatype" was run through for loop function to detect the presence of garbage values and the result shown null.
+
+
+Step :7 Standardising Date Formats.
+  
+ 1. The date available in the dataset was in "object" datatype and the same was converted to string first and then converted to     yyyy/mm/dd format.
+ 
+STEP 8: Correcting department names.
+
+1. The department name column was a total mess with too much of unique values
+2. Firstly all department values were mapped to common department dictionary names like marketing, HR, Sales,support,        engineering & Na
+3. Secondly all was converted to lower case so as to maintain consistency.
+4. Thirdly the department names was mapped using for loop and applied the same to "department" column.
+5. Lastly the unmapped ones with NA was filled with 'unknown' value, followed by  Verifying the changes by displaying unique       department names after cleaning.
+
+
+STEP 9- Handling Salary Noise.
+1. Salary column consisted of decimals more than two digits.So the samw was rounded off to nearest two digits.
